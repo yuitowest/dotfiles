@@ -1,0 +1,12 @@
+[push]
+  default = simple
+[user]
+  name = Yuki Ito
+  email = yuitowest@gmail.com
+[alias]
+  st = status --short --branch
+  di = diff
+  dis = diff --staged
+  cor = !git checkout `git branch -a | peco | head -n 1 | sed \"s/^\\*\\s*//\" | sed \"s/remotes\\/[^\\/]*\\/\\(\\S*\\)/\\1 /\"`
+[core]
+  excludesfile = ~/.gitignore_global

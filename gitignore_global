@@ -1,0 +1,15 @@
+*proj.ios/Info.h
+*.pyc
+*.iml
+*.o
+\#*#
+*#
+.#*
+.*~
+*~
+.DS_Store
+*.sw[po]
+tags
+.svn
+*.log
+.hg
