@@ -1,0 +1,32 @@
+set! browser.sessionstore.max_tabs_undo=30
+set! browser.tabs.closeButtons=2
+set! ui.key.generalAccessKey=0
+set complete=l
+set titlestring=Firefox
+set showstatuslinks=1
+set focuscontent
+set verbose=5
+set hlsearch
+set gui=none
+set gui=tabs
+set gui=addons
+set gui=navigation
+set noscrollbars
+
+set visualbell
+hi Bell opacity: .5;
+
+map <C-R> :restart<CR>
+map ,s :so ~/.vimperatorrc<CR>
+
+map y :echo 'Yank!'<CR>Y
+
+map j 5<C-e>
+map k 5<C-y>
+
+map <C-c> Y
+map <C-g> YP
+
+map <C-h> <BS>
+imap <C-h> <BS>
+cmap <C-h> <BS>
