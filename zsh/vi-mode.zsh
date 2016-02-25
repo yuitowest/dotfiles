@@ -5,8 +5,6 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-bindkey -v
-
 # if mode indicator wasn't setup by theme, define default
 #if [[ "$MODE_INDICATOR" == "" ]]; then
 #  MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
