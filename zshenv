@@ -1,3 +1,5 @@
+# -*- sh -*-
+
 typeset -U path cdpath fpath manpath
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
@@ -6,6 +8,7 @@ path=(
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /opt/*/current/bin(N-/)
+  /usr/local/Cellar/openssl/1.0.2e_1/bin(N-/)
   ${path}
   )
 
@@ -35,6 +38,9 @@ if type rbenv >/dev/null 2>&1; then; eval "$(rbenv init -)"; fi
 # nvm
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh  # This loads NVM
 
+# node_modules
+path=(./node_modules/.bin ${path})
+
 # git-completion
 [[ -s /usr/local/share/zsh/site-functions/git-completion.zsh ]] && \
   . /usr/local/share/zsh/site-functions/git-completion.zsh
@@ -43,11 +49,17 @@ if type rbenv >/dev/null 2>&1; then; eval "$(rbenv init -)"; fi
 [[ -s /usr/local/share/zsh/site-functions/git-flow-completion.zsh ]] && \
   . /usr/local/share/zsh/site-functions/git-flow-completion.zsh
 
+# golang
+export GOPATH=$HOME/.go
+export GOROOT=/usr/local/opt/go/libexec
+path=($GOPATH/bin(N-/) ${path})
+
 # coreutils
 path=(/usr/local/opt/coreutils/libexec/gnubin(N-/) ${path})
 
 # macvim
 path=(/Applications/MacVim.app/Contents/MacOS/(N-/) ${path})
+
 
 # pager
 if type lv > /dev/null 2>&1; then
