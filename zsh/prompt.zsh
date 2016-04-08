@@ -45,17 +45,23 @@ update_prompt()
     ### virtualenv
     virtualenv_prompt=""
     if [ -n "${VIRTUAL_ENV}" ] ;then
-      virtualenv_prompt=" (virtualenv: $(basename $VIRTUAL_ENV))"
+      virtualenv_prompt=" (venv: $(basename $VIRTUAL_ENV))"
     fi
 
     ### rbenv
-    rbenv_prompt=`rbenv version | awk '{print $1}'`
-    if [ -n "virtualenv_prompt" ] ;then
+    rbenv_prompt=`rbenv version | awk '{print $1}' 2> /dev/null`
+    if [ -n "${rbenv_prompt}" ] ;then
       rbenv_prompt=" (rbenv: ${rbenv_prompt})"
     fi
 
+    ### nvm
+    nvm_prompt=`nvm current 2> /dev/null`
+    if [ -n "${nvm_prompt}" ] ;then
+      nvm_prompt=" (nvm: ${nvm_prompt})"
+    fi
+
     vcs_prompt='%1(v|%F{green}%1v%f|)'
-    PROMPT="%U${prompt_host}${prompt_current}${virtualenv_prompt}${rbenv_prompt}%u"$'\n'"${prompt_left}"
+    PROMPT="%U${prompt_host}${prompt_current}${virtualenv_prompt}${rbenv_prompt}${nvm_prompt}%u"$'\n'"${prompt_left}"
     RPROMPT="${vcs_prompt}"
 }
 
