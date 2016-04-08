@@ -10,6 +10,9 @@ hi PmenuSel    guifg=NONE     guibg=#4C4C4C  gui=NONE
 hi PmenuSbar   guifg=NONE     guibg=#4C4C4C  gui=NONE
 hi FoldColumn  guifg=#F92672 guibg=#000000
 hi Folded      guifg=#F92672 guibg=#000000
+hi TabLineSel  guifg=#d0d0d0, guibg=#666666
+hi PmenuSel    guifg=#d0d0d0, guibg=#666666
+hi TabLine     guifg=#000000, guibg=#666666
 
 " PHP
 hi! link phpFunctions Function
