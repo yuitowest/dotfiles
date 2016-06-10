@@ -65,6 +65,11 @@ let g:jedi#auto_vim_configuration = 0
 let g:neocomplete#force_omni_input_patterns.python='\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " }}}
 
+" ctrlp {{{
+let g:ctrlp_map = ''
+let g:ctrlp_working_path_mode = 'ra'
+" }}}
+
 " unite {{{
 let g:unite_source_file_mru_limit = 200
 let g:unite_enable_start_insert = 1
@@ -82,8 +87,8 @@ call unite#custom#source(
       \ 'file_rec/async', 'ignore_pattern', '\(\.png\|\.gif\|\.jpeg\|\.jpg\|\.pyc\)$')
 " }}}
 
-" matchit {{{
-so $VIMRUNTIME/macros/matchit.vim
+" matchparen {{{
+let g:loaded_matchparen = 1
 " }}}
 
 " Indent-guides {{{
@@ -120,16 +125,11 @@ let g:lightline = {
       \   ],
       \   'right': []
       \ },
-      \ 'tabline': {
-      \   'left': [ [ 'tabs' ] ],
-      \   'right': [ [ 'cwd' ] ]
-      \ },
       \ 'component_function': {
       \   'modified': 'MyModified',
       \   'readonly': 'MyReadonly',
       \   'filename': 'MyFilename',
       \   'mode': 'MyMode',
-      \   'cwd': 'MyCwd',
       \   'anzu': 'anzu#search_status',
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
@@ -196,7 +196,7 @@ autocmd MyAutoCmd WinLeave,TabLeave * call anzu#clear_search_status()
 " }}}
 
 " auto-ctags {{{
-let g:auto_ctags = 1
+let g:auto_ctags = 0
 let g:auto_ctags_directory_list = ['.git', '.svn', 'node_modules']
 " }}}
 
@@ -242,36 +242,24 @@ let g:quickhl_manual_colors = [
       \ ]
 " }}}
 
-" quickrun {{{
-" let g:quickrun_config = {
-"     \ "watchdogs_checker/_" : {
-"     \     "hook/close_quickfix/enable_exit" : 1,
-"     \     "runner" : "vimproc",
-"     \     "runner/vimproc/updatetime" : 10,
-"     \     "outputter/quickfix/open_cmd" : "",
-"     \     "hook/qfstatusline_update/enable_exit" : 1,
-"     \     "hook/qfstatusline_update/priority_exit" : 4,
-"     \ },
-"     \ "python/watchdogs_checker" : {
-"     \     "type" : "watchdogs_checker/flake8",
-"     \ },
-"     \ "erlang/watchdogs_checker" : {
-"     \     "type" : "watchdogs_checker/flymake",
-"     \ },
-"     \ "watchdogs_checker/flymake" : {
-"     \     "command"   : expand('~/.vim/bundle/vim-erlang-compiler/compiler/erlang_check.erl'),
-"     \     "exec"      : "%c %o %s:p ",
-"     \ },
-"     \ }
-" 
-" call watchdogs#setup(g:quickrun_config)
-" 
-" " 書き込み後にシンタックスチェックを行う
-" let g:watchdogs_check_BufWritePost_enable = 1
-" " }}}
-
-let g:erlang_show_errors = 0
-
+" syntastic {{{
 let g:syntastic_erlang_checkers = ['escript']
+" }}}
+
+" vim-erlang {{{
+let g:erlang_show_errors = 0
+" }}}
+
+" vim-json {{{
+let g:vim_json_syntax_conceal = 0
+" }}}
+
+" buftabline {{{
+let g:buftabline_numbers    = 0
+let g:buftabline_indicators = 1
+let g:buftabline_separators = 1
+" }}}
+
+
 " vim: expandtab softtabstop=2 shiftwidth=2
 " vim: foldmethod=marker

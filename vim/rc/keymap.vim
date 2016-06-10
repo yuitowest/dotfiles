@@ -53,10 +53,10 @@ nnoremap [scoron] <Nop>
 nmap ; [scoron]
 noremap [scoron]: :
 nnoremap <silent> [scoron]w :w<CR>
-nnoremap <silent> [scoron]d :BD<CR>
+nnoremap <silent> [scoron]d :Bdelete<CR>
 nnoremap <silent> [scoron]q :q<CR>
 nnoremap <silent> [scoron]W :w!<CR>
-nnoremap <silent> [scoron]D :BD!<CR>
+nnoremap <silent> [scoron]D :Bdelete!<CR>
 nnoremap <silent> [scoron]Q :q!<CR>
 nnoremap <silent> [scoron]; :<C-u>Unite buffer<CR>
 
@@ -146,11 +146,6 @@ function! s:unite_my_settings()
 endfunction
 
 " =============================================================================
-" NERDTree
-" =============================================================================
-let NERDTreeQuitOnOpen=1
-
-" =============================================================================
 " cmdwinEnter
 " =============================================================================
 nnoremap <sid>(command-line-enter) q:
@@ -181,22 +176,3 @@ nnoremap <expr> h
 
 nnoremap <expr> l
       \ foldclosed(line('.')) != -1 ? 'zo' : 'l'
-
-
-" " =============================================================================
-" " QuickFixCurrentNumber
-" " =============================================================================
-" nnoremap Q q
-" nnoremap [quickfix] <Nop>
-" nnoremap q <Nop>
-" nmap q [quickfix]
-" 
-" nmap [quickfix]q  <Plug>(QuickFixCurrentNumberGo)
-" nmap [quickfix]fn <Plug>(QuickFixCurrentNumberQNext)
-" nmap [quickfix]fp <Plug>(QuickFixCurrentNumberQPrev)
-" nmap [quickfix]n  <Plug>(QuickFixCurrentNumberLNext)
-" nmap [quickfix]p  <Plug>(QuickFixCurrentNumberLPrev)
-" nmap [quickfix]fg <Plug>(QuickFixCurrentNumberQFirst)
-" nmap [quickfix]fG <Plug>(QuickFixCurrentNumberQLast)
-" nmap [quickfix]g  <Plug>(QuickFixCurrentNumberLFirst)
-" nmap [quickfix]G  <Plug>(QuickFixCurrentNumberLLast)

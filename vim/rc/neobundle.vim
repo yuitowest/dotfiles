@@ -23,7 +23,8 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'sgur/unite-qf', {
       \ 'depends' : 'Shougo/unite.vim'
       \ }
-NeoBundle 'appleYaks/bufkill.vim.git'
+" NeoBundle 'appleYaks/bufkill.vim.git'
+NeoBundle 'moll/vim-bbye'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'itchyny/lightline.vim'
@@ -35,7 +36,7 @@ NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 't9md/vim-choosewin.git'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'jelera/vim-javascript-syntax.git'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'jmcantrell/vim-virtualenv'
 NeoBundleLazy 'davidhalter/jedi-vim', {
@@ -52,15 +53,11 @@ NeoBundleLazy 'nvie/vim-flake8', {
       \ 'build' : {
       \     'mac': 'pip install flake8',
       \ }}
-NeoBundleLazy 'hynek/vim-python-pep8-indent', {
-      \ 'autoload': {
-      \   'filetypes': ['python', 'python3', 'djangohtml']
-      \ }}
+NeoBundle 'duckpunch/vim-python-indent'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'airblade/vim-rooter'
-NeoBundle 'rhysd/committia.vim'
 NeoBundle 'vim-erlang/vim-erlang-runtime'
 NeoBundle 'vim-erlang/vim-erlang-skeletons'
 NeoBundle 'vim-erlang/vim-erlang-compiler'
@@ -72,4 +69,10 @@ NeoBundle 'cohama/vim-hier'
 NeoBundle "dannyob/quickfixstatus"
 NeoBundle 'will133/vim-dirdiff'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'ap/vim-buftabline'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'itchyny/vim-parenmatch'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'elixir-lang/vim-elixir'
 call neobundle#end()
