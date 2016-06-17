@@ -32,10 +32,6 @@ map ge <Plug>(smartword-ge)
 " =============================================================================
 "search
 " =============================================================================
-nmap n <Plug>(anzu-n)zz
-nmap N <Plug>(anzu-N)zz
-nmap * <Plug>(anzu-star)zz
-nmap # <Plug>(anzu-sharp)zz
 nnoremap / :<C-u>set hlsearch<Return>/
 nnoremap ? :<C-u>set hlsearch<Return>?
 cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
@@ -114,7 +110,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
-nnoremap <Tab> :<C-u>ChangeWindow<CR>
+nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
 map <kPlus> <C-w>+
 map <kMinus> <C-w>-
