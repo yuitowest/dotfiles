@@ -6,7 +6,7 @@ set encoding=utf-8
 
 filetype plugin indent off
 
-so ~/.vim/rc/dein.vim
+so ~/.vim/rc/plug.vim
 
 filetype plugin indent on
 
@@ -17,6 +17,8 @@ so ~/.vim/rc/settings.vim
 so ~/.vim/rc/command.vim
 
 so ~/.vim/rc/keymap.vim
+
+so ~/.vim/rc/plugin_settings.vim
 
 if !exists('s:loaded_my_vimrc')
   let s:loaded_my_vimrc = 1

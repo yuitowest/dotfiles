@@ -1,4 +1,5 @@
 # -*- sh -*-
+setopt no_global_rcs
 
 typeset -U path cdpath fpath manpath
 typeset -xT SUDO_PATH sudo_path
@@ -8,9 +9,11 @@ path=(
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /opt/*/current/bin(N-/)
-  /usr/local/Cellar/openssl/1.0.2e_1/bin(N-/)
+  /opt/*/current/sbin(N-/)
+  /opt/openresty/current/nginx/sbin(N-/)
   ${path}
   )
+
 
 sudo_path=(
   {/usr/local,/usr,}/sbin(N-/)
@@ -36,7 +39,11 @@ export HGENCODING=utf-8
 if type rbenv >/dev/null 2>&1; then; eval "$(rbenv init -)"; fi
 
 # nvm
-[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh  # This loads NVM
+export NVM_DIR=/usr/local/Cellar/nvm/0.31.7
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Android
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # node_modules
 path=(./node_modules/.bin ${path})
@@ -76,9 +83,13 @@ else
   alias lv="$PAGER"
 fi
 
+# django
+export DJANGO_COLORS="light;http_success=green,bold"
+
 # virtualenvwrapper
+export VIRTUAL_ENV_DISABLE_PROMPT=0
 if [ -f /opt/python/current/bin/virtualenvwrapper.sh ]; then
-    export VIRTUALENVWRAPPER_PYTHON=/opt/python/current/bin/python
+    export VIRTUALENVWRAPPER_PYTHON=/opt/python/current/bin/python3
     export WORKON_HOME=$HOME/.virtualenvs
     source /opt/python/current/bin/virtualenvwrapper.sh
 fi

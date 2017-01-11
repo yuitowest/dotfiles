@@ -1,0 +1,113 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+hook_add = '''
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+'''
+
+[[plugins]]
+repo = 'ap/vim-buftabline'
+hook_add = '''
+let g:buftabline_numbers    = 0
+let g:buftabline_indicators = 1
+let g:buftabline_separators = 1
+'''
+
+[[plugins]]
+repo = 'moll/vim-bbye'
+
+[[plugins]]
+repo = 't9md/vim-quickhl'
+hook_add = '''
+nmap [Space]ht <Plug>(quickhl-manual-this)
+xmap [Space]ht <Plug>(quickhl-manual-this)
+nmap [Space]hr <Plug>(quickhl-manual-reset)
+xmap [Space]hr <Plug>(quickhl-manual-reset)
+nmap [Space]hw <Plug>(quickhl-cword-toggle)
+'''
+
+[[plugins]]
+repo = 'kana/vim-smartword'
+
+[[plugins]]
+repo = 'kana/vim-smartchr'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#222333  gui=NONE
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#233333  gui=NONE
+if 'dark' == &background
+  hi IndentGuidesOdd  ctermbg=black
+  hi IndentGuidesEven ctermbg=darkgrey
+else
+  hi IndentGuidesOdd  ctermbg=white
+  hi IndentGuidesEven ctermbg=lightgrey
+endif
+'''
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+hook_add = '''
+let g:rooter_use_lcd = 1
+let g:rooter_silent_chdir = 1
+autocmd BufEnter * :Rooter
+'''
+
+[[plugins]]
+repo = 'neomake/neomake'
+hook_add = '''
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_verbose = 0
+augroup AutoNeomake
+  autocmd!
+  autocmd BufWritePost * Neomake
+augroup END
+
+let g:neomake_warning_sign = {
+    \ 'text': '>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+let g:neomake_error_sign = {
+    \ 'text': '>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+'''
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = 'context_filetype.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+source ~/.vim/rc/plugins/lightline.vim
+'''

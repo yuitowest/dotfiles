@@ -1,0 +1,61 @@
+prompt_original_git_dirty() {
+  command git rev-parse --is-inside-work-tree &>/dev/null || return
+  command git diff --quiet --ignore-submodules HEAD &>/dev/null
+  (($? == 1)) && echo ' *'
+}
+
+prompt_original_preexec() {
+  print -Pn "\e]0;"
+  echo -nE "$PWD:t: $2"
+  print -Pn "\a"
+}
+
+prompt_original_precmd() {
+  print -Pn '\e]0;%~\a'
+  vcs_info
+
+  # virtualenv
+  local virtualenv_prompt=""
+  if [ -n "${VIRTUAL_ENV}" ] ;then
+    virtualenv_prompt="[py:$(basename $VIRTUAL_ENV)]"
+  fi
+
+  # rbenv
+  local rbenv_prompt=`rbenv version | awk '{print $1}' 2> /dev/null`
+  if [ -n "${rbenv_prompt}" ] ;then
+    rbenv_prompt="[rb: ${rbenv_prompt}]"
+  fi
+
+  # nvm
+  local nvm_prompt=`nvm current 2> /dev/null`
+  if [ -n "${nvm_prompt}" ] ;then
+    nvm_prompt="[nvm: ${nvm_prompt}]"
+  fi
+
+  # vcs
+  local vcs_prompt=`echo $vcs_info_msg_0_ | tr -d " "`
+  if [ -n "${vcs_prompt}" ] ;then
+    vcs_prompt="(${vcs_prompt}`prompt_original_git_dirty`)"
+  fi
+
+  local prompt_pure_preprompt='%F{blue}%~%F{magenta}$vcs_prompt %F{242}$virtualenv_prompt$rbenv_prompt$nvm_prompt%f'
+  print -P $prompt_pure_preprompt
+}
+
+
+prompt_original_setup() {
+  prompt_opts=(cr subst percent)
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  add-zsh-hook precmd prompt_original_precmd
+  add-zsh-hook preexec prompt_original_preexec
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:git*' formats ' %b'
+  zstyle ':vcs_info:git*' actionformats ' %b|%a'
+
+  PROMPT='%(?.%F{white}.%F{red})$%f '
+}
+
+prompt_original_setup "$@"

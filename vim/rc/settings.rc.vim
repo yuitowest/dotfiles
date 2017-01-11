@@ -1,5 +1,5 @@
 set number
-set relativenumber
+" set relativenumber
 set smarttab
 set expandtab
 set tabstop=2
@@ -10,13 +10,13 @@ set showmatch
 set cpoptions-=m
 set matchtime=3
 set matchpairs+=<:>
-set directory=$HOME/.vim/tmp
 set hidden
 set infercase
 set ignorecase
 set cdpath+=~
 set grepprg=internal
-set swapfile
+set directory=$HOME/.vim/tmp
+set noswapfile
 set textwidth=0
 set timeout timeoutlen=2500 ttimeoutlen=50
 set smartcase
@@ -39,16 +39,14 @@ set wildmode=list:longest,full
 set history=300
 set spelllang=en_us
 set display=lastline
-set formatoptions+=mM
 set lazyredraw
 set noequalalways
 set laststatus=2
 set showcmd
-set cursorline
+set nocursorline
 set guicursor=a:blinkon0
 set ruler
 set showtabline=2
-autocmd MyAutoCmd FileType * setl formatoptions-=ro | setl formatoptions+=mM
 set fileformat=unix
 set fileformats=unix,dos,mac
 set autoindent
@@ -60,7 +58,9 @@ set viminfo+=!
 set viminfo+=n~/.vim/tmp/viminfo
 set suffixes=.bak,~,.swp,.o,.info,.brf,.bak,.back
 set ttyfast
-set foldtext=custom_fold#execute()
-set tags+=.svn/tags,.git/tags,tags
+" set foldtext=custom_fold#execute()
+set foldlevel=0
+set foldnestmax=1
+set tags+=.svn/tags,.git/tags,./tags,tags
 set notagbsearch
 set noundofile

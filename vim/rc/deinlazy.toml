@@ -1,0 +1,25 @@
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+hook_add = '''
+source ~/.vim/rc/plugins/unite.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1
+hook_add = '''
+source ~/.vim/rc/plugins/neocomplete.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'will133/vim-dirdiff'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'

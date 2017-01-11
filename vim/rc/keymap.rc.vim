@@ -11,9 +11,7 @@ xnoremap <TAB>  >gv
 xnoremap <S-TAB>  <gv
 nnoremap P P=']
 
-" =============================================================================
 " move
-" =============================================================================
 vnoremap j gj
 vnoremap k gk
 nnoremap <C-u> 5<C-y>
@@ -28,23 +26,17 @@ map w <Plug>(smartword-w)
 map b <Plug>(smartword-b)
 map e <Plug>(smartword-e)
 map ge <Plug>(smartword-ge)
+vnoremap v $h
 
-" =============================================================================
-"search
-" =============================================================================
+" search
 nnoremap / :<C-u>set hlsearch<Return>/
 nnoremap ? :<C-u>set hlsearch<Return>?
 cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ?  getcmdtype() == '?' ? '\?' : '?'
 vnoremap * "zy:let @/ = @z<CR>n
 
-vnoremap v $h
-
-noremap : ;
-
-" =============================================================================
 " semicoron
-" =============================================================================
+noremap : ;
 nnoremap [scoron] <Nop>
 nmap ; [scoron]
 noremap [scoron]: :
@@ -56,9 +48,7 @@ nnoremap <silent> [scoron]D :Bdelete!<CR>
 nnoremap <silent> [scoron]Q :q!<CR>
 nnoremap <silent> [scoron]; :<C-u>Unite buffer<CR>
 
-" =============================================================================
 " space
-" =============================================================================
 nnoremap [Space] <Nop>
 xnoremap [Space] <Nop>
 nmap <Space> [Space]
@@ -73,36 +63,6 @@ nnoremap <silent> [Space]g :<C-u>edit $MYGVIMRC<CR>
 nnoremap <silent> [Space]s
   \ :<C-u>source $MYVIMRC\| if has('gui_running') \|source $MYGVIMRC \| endif<CR>
 
-" quickhl
-nmap [Space]ht <Plug>(quickhl-manual-this)
-xmap [Space]ht <Plug>(quickhl-manual-this)
-nmap [Space]hr <Plug>(quickhl-manual-reset)
-xmap [Space]hr <Plug>(quickhl-manual-reset)
-nmap [Space]hw <Plug>(quickhl-cword-toggle)
-
-" memolist
-map [Space]ml :MemoList<CR>
-map [Space]mn :MemoNew<CR>
-map [Space]mg :MemoGrep<CR>
-
-" yankround
-nmap p <Plug>(yankround-p)
-xmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-xmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-
-" memolist
-command! -nargs=0 KobitoAdd execute 'silent !open -a Kobito.app ' . expand('%:p')
-command! -nargs=? -bar MyMemoNew :call memolist#new(<q-args>)|w|KobitoAdd
-nnoremap [Space]mn :<C-u>MyMemoNew<CR>
-nnoremap [Space]ml :<C-u>MemoList<CR>
-nnoremap [Space]mg :<C-u>MemoGrep<CR>
-
-" choosewin
-nmap [Space]w <Plug>(choosewin)
-
 " =============================================================================
 " window
 " =============================================================================
@@ -114,32 +74,6 @@ nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
 map <kPlus> <C-w>+
 map <kMinus> <C-w>-
-
-" =============================================================================
-" unite
-" =============================================================================
-nnoremap [unite] <Nop>
-xnoremap [unite] <Nop>
-nmap f [unite]
-xmap f [unite]
-
-nnoremap <silent> <expr> <SID>(buffer-file) ':<C-u>Unite file -buffer-name=files -input=' . expand('%:p:h') . '/<CR>'
-nmap <silent> [unite]f <SID>(buffer-file)
-nnoremap <silent> [unite]p :<C-u>Unite file_rec/async:!<CR>
-nnoremap <silent> [unite]o :<C-u>Unite -vertical -winwidth=30 outline<CR>
-nnoremap <silent> [unite]c :<C-u>Unite -no-start-insert colorscheme<CR>
-nnoremap <silent> [unite]g :<C-u>Unite grep<CR>
-nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-nnoremap <silent> [unite]y :<C-u>Unite -no-start-insert yankround<CR>
-
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  nmap <buffer> <ESC> <Plug>(unite_all_exit)
-  nmap <buffer> q <Plug>(unite_all_exit)
-  nnoremap <silent><buffer><expr> dd unite#smart_map('dd', unite#do_action('delete'))
-  nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
-  nmap <buffer><expr> s unite#mappings#set_current_filters(['sorter_word'])
-endfunction
 
 " =============================================================================
 " cmdwinEnter
