@@ -6,7 +6,7 @@ let g:lightline = {
       \     ['mode', 'paste'], ['filename']
       \   ],
       \   'right': [
-      \      ['neomake'], ['lineinfo'], ['fileformat', 'fileencoding', 'filetype']
+      \      ['ale'], ['lineinfo'], ['fileformat', 'fileencoding', 'filetype']
       \   ]
       \ },
       \ 'inactive': {
@@ -20,10 +20,9 @@ let g:lightline = {
       \   'readonly': 'MyReadonly',
       \   'filename': 'MyFilename',
       \   'mode': 'MyMode',
-      \   'neomake': 'MyErrors',
+      \   'ale': 'ALEStatus',
       \ },
       \ 'component_type': {
-      \   'neomake': 'error',
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' },
@@ -82,18 +81,6 @@ function! MyMode()
   return MyReadonly(). l:mode
 endfunction
 
-function! MyErrors()
-    let total = 0
-    for v in values(neomake#statusline#LoclistCounts())
-        let total += v
-    endfor
-    for v in items(neomake#statusline#QflistCounts())
-        let total += v
-    endfor
-
-    if total == 0
-        return ''
-    endif
-
-    return 'Errors: 1 of '.total
-endf
+function! ALEStatus()
+  return ALEGetStatusLine()
+endfunction

@@ -39,12 +39,10 @@ function! s:source_rc(path, ...) abort
   return
 endfunction
 
-call s:source_rc('dein.rc.vim')
-
-syntax enable
-filetype plugin indent on
-
+" call s:source_rc('dein.rc.vim')
+call s:source_rc('vim-plug.rc.vim')
 call s:source_rc('settings.rc.vim')
+call s:source_rc('plugin.rc.vim')
 call s:source_rc('keymap.rc.vim')
 
 set helplang& helplang=en,ja

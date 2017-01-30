@@ -1,0 +1,5 @@
+nmap [Space]ht <Plug>(quickhl-manual-this)
+xmap [Space]ht <Plug>(quickhl-manual-this)
+nmap [Space]hr <Plug>(quickhl-manual-reset)
+xmap [Space]hr <Plug>(quickhl-manual-reset)
+nmap [Space]hw <Plug>(quickhl-cword-toggle)
